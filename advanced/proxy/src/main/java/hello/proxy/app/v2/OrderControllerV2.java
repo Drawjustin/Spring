@@ -9,15 +9,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping
 @ResponseBody
 public class OrderControllerV2 {
-    private final OrderServiceV2 orderServiceV2;
 
+    private final OrderServiceV2 orderService;
 
-    public OrderControllerV2(OrderServiceV2 orderServiceV2) {
-        this.orderServiceV2 = orderServiceV2;
+    public OrderControllerV2(OrderServiceV2 orderService) {
+        this.orderService = orderService;
     }
+
     @GetMapping("/v2/request")
     public String request(String itemId) {
-        orderServiceV2.orderItem(itemId);
+        orderService.orderItem(itemId);
         return "ok";
     }
 
@@ -25,4 +26,5 @@ public class OrderControllerV2 {
     public String noLog() {
         return "ok";
     }
+
 }
